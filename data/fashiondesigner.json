@@ -1,0 +1,27 @@
+[
+  {
+    "nameOfDressMaker": "BOBO",
+    "address": "Jl. Veteran no. 1",
+    "phoneNumber": "0812354637"
+},
+{
+  "nameOfDressMaker": "BIBI",
+    "address": "Jl. Lontar no. 3",
+    "phoneNumber": "0812367868"
+},
+{
+  "nameOfDressMaker": "LALA",
+    "address": "Jl. Darmo no. 88",
+    "phoneNumber": "0812358889"
+},
+{
+  "nameOfDressMaker": "LILI",
+    "address": "Jl. Basuki Rahmat no. 111",
+    "phoneNumber": "0812377889"
+},
+{
+  "nameOfDressMaker": "RORO",
+    "address": "Jl. MT.Haryono no. 378",
+    "phoneNumber": "0812987655"
+}
+]

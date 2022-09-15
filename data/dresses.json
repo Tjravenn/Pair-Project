@@ -1,0 +1,32 @@
+[
+  {
+    "dressModel": "Batik",
+    "price": 500000,
+    "stock": 35,
+    "FashionDesignerId": 1
+},
+{
+    "dressModel": "Brokat",
+    "price": 550000,
+    "stock": 50,
+    "FashionDesignerId": 2
+},
+{
+    "dressModel": "Long Dress",
+    "price": 680000,
+    "stock": 25,
+    "FashionDesignerId": 3
+},
+{
+    "dressModel": "Satin",
+    "price": 775000,
+    "stock": 28,
+    "FashionDesignerId": 4
+},
+{
+    "dressModel": "Kimono",
+    "price": 675000,
+    "stock": 18,
+    "FashionDesignerId": 5
+}
+]
