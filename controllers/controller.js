@@ -17,7 +17,9 @@ class Controller {
                 }
             }
         }
-        Dress.findAll(option)
+        Dress.findAll({
+            attributes: {exclude: ['DressId']},
+        },option)
         .then((result) => {
             // res.send(result)
             res.render('home', {result})
@@ -36,7 +38,9 @@ class Controller {
                 }
             }
         }
-        Dress.findAll(option)
+        Dress.findAll({
+            attributes: {exclude: ['DressId']},
+        },option)
             .then((result) => {
                 res.render('home', { result})
             })
@@ -49,11 +53,9 @@ class Controller {
     }
     static postAddProduct(req, res) {
         const { dressModel, price, stock } = req.body
-        Dress.create({
-            dressModel,
-            price,
-            stock
-        })
+        const input = {dressModel, price, stock}
+        console.log(input);
+        Dress.create(input)
             .then((result) => {
                 res.redirect('/dashboard/admin')
             })
@@ -66,7 +68,7 @@ class Controller {
                         invalid[el.path] = el.message
                     })
                     .then((result) => {
-                        res.render('addFormProduct', {result})
+                        res.render('addFormProduct', {result: input})
                     })
                     .catch((error) => {
                         res.send(error)
@@ -78,6 +80,7 @@ class Controller {
     static getProductEditform(req, res) {
         const { id } = req.params
         Dress.findOne({
+            attributes: {exclude: ['DressId']},
             where: {
                 id: id
             }
@@ -86,6 +89,7 @@ class Controller {
                 res.render('editProduct', { result })
             })
             .catch((error) => {
+                // console.log(error)
                 res.send(error)
             })
     }
@@ -125,7 +129,7 @@ class Controller {
             })
     }
     static showUser(req,res){
-        Users.findAll({
+        User.findAll({
             where:{
                 role:"user"
             }
