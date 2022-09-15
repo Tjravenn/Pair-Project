@@ -1,37 +1,23 @@
 [
-  {
-    "dressModel": "Batik",
-    "price": 500000,
-    "stock": 35,
-    "FashionDesignerId": 1,
-    "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTw-x-9x137cv9XQzhfdv5OrFxeIg_upzFT_KilVARdR-827uvidtPgmImis_7kJHlxx-g&usqp=CAU"
-},
-{
+    {
     "dressModel": "Brokat",
     "price": 550000,
     "stock": 50,
-    "FashionDesignerId": 2,
+    "FashionDesignerId": 1,
     "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJ8akd46FHG4TL-hPOP9TdJyQ1kO1a4ZehVA&usqp=CAU"
 },
 {
     "dressModel": "Long Dress",
     "price": 680000,
     "stock": 25,
-    "FashionDesignerId": 3,
+    "FashionDesignerId": 2,
     "imageUrl": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRho7bzQNHIEHJV_mKYOCYqgcemYS4jZhp0eQ&usqp=CAU"
 },
 {
     "dressModel": "Satin",
     "price": 775000,
     "stock": 28,
-    "FashionDesignerId": 4,
+    "FashionDesignerId": 3,
     "imageUrl": "https://lh3.googleusercontent.com/5PhXmthYu-BsHzctw-1a9VyG-5jwvZ9Tj8mPKDa4Tn2JkaQ8K0OjzsVlwsj9VPKgFZWpdy2TZekLFljm2wp4sxYBh6U_FFhoDBxzElJSqkClk6doWR5135wIp7pP5WresD5FDNJJ"
-},
-{
-    "dressModel": "Kimono",
-    "price": 675000,
-    "stock": 18,
-    "FashionDesignerId": 5,
-    "imageUrl": "https://im.berrybenka.com/assets/upload/product/zoom/258452_flare-ruffle-kimono-dress-in-white_white_W342M.jpg"
 }
 ]
