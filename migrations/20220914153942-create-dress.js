@@ -18,7 +18,11 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       FashionDesignerId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'FashionDesigners',
+          key: 'id'
+        }
       },
       createdAt: {
         allowNull: false,

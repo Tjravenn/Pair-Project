@@ -2,7 +2,7 @@
 
 module.exports = {
   up (queryInterface, Sequelize) {
-    return queryInterface.renameColumn('FashionDesigners', 'nodm', 'nameOfDressMaker');
+    return queryInterface.addColumn ('Dresses', 'imageUrl', Sequelize.STRING);
     /**
      * Add altering commands here.
      *
@@ -12,7 +12,7 @@ module.exports = {
   },
 
   down (queryInterface, Sequelize) {
-    return queryInterface.renameColumn('FashionDesigners', 'nameOfDressMaker', 'nodm');
+    return queryInterface.removeColumn ('Dresses', 'imageUrl');
     /**
      * Add reverting commands here.
      *
