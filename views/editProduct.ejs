@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Page</title>
+</head>
+<body>
+    <h1>Edit Product Page</h1>
+    <form action="/dashboard/admin/product/edit/<%= result.id %>" method="post">
+        <label for="1">Nama</label>
+        <input type="text" name="name" id="1" autocomplete="off" value="<%= result.name %>">
+        <br>
+        <label for="2">Dress Model</label>
+        <input type="text" name="brand" id="2" autocomplete="off" value="<%= result.brand %>">
+        <br>
+        <label for="3">Stock</label>
+        <input type="number" name="stock" id="3" value="<%= result.stock %>">
+        <br>
+        <label for="7">Price</label>
+        <input type="number" name="price" id="7" value="<%= formatRp(result.price) %>">
+        <br>
+        <label for="4">Photo</label>
+        <input type="text" name="description" id="4" autocomplete="off" value="<%=result.imageUrl %>" >
+        <br>
+        
+        <br>
+        <input type="hidden" name="FashionDesignerId" id="6" value="2">
+        <br>
+        <input type="submit" value="Add">
+    </form>
+
+    <br><br>
+    <button><a href="/dashboard/admin">Back</a></button>
+    
+</body>
+</html>
