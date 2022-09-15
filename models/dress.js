@@ -2,6 +2,7 @@
 const {
   Model
 } = require('sequelize');
+const formatRp = require('../helpers/formatRp');
 module.exports = (sequelize, DataTypes) => {
   class Dress extends Model {
     /**
@@ -21,8 +22,45 @@ module.exports = (sequelize, DataTypes) => {
   }
   Dress.init({
     dressModel: DataTypes.STRING,
+    allowNull: false,
+      validate: {
+        notNull: {
+          msg: "Dress model cannot be null"
+        },
+        notEmpty: {
+          msg: "Dress model cannot be empty"
+        }
+      },
     price: DataTypes.INTEGER,
+    allowNull: false,
+      validate: {
+        notNull: {
+          msg: "Magazine price cannot be null"
+        },
+        notEmpty: {
+          msg: "Magazine price cannot be empty"
+        },
+        minimumPrice(value) {
+          if (value < 350000) {
+            throw new Error(`Minimum selling price is ${formatRp}`)
+          }
+        }
+      },
     stock: DataTypes.INTEGER,
+    allowNull: false,
+      validate: {
+        notNull: {
+          msg: "magazine stock cannot be null"
+        },
+        notEmpty: {
+          msg: "magazine stock cannot be empty"
+        },
+        minimumStock(value) {
+          if (value < 0) {
+            throw new Error('STOCK CANNOT BE NEGATIVE!')
+          }
+        }
+      },
     FashionDesignerId: DataTypes.INTEGER
   }, {
     sequelize,
