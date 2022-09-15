@@ -1,12 +1,16 @@
-const express = require('express')
-const Controller = require('../controllers/controller')
-const router = express.Router()
+const router = require('express').Router();
+const userController = require('../controllers/userController');
 
-router.get('/signup', Controller.getSignup)
-router.post("/signup", Controller.postSignup)
-router.get('/signin', Controller.getSignin)
-router.post("/signin", Controller.postSignin)
-router.get("/logout", Controller.logOut)
+const isAuth = (request, response, next) => {
+  if (request.session.user) response.redirect('/');
+  else next();
+}
+
+router.get('/signup',isAuth, userController.getSignup)
+router.post("/signup",isAuth, userController.postSignup)
+router.get('/signin',isAuth, userController.getSignin)
+router.post("/signin",isAuth, userController.postSignin)
+router.get("/logout",isAuth, userController.logOut)
 
 
 
