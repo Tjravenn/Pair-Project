@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
+  <style>
+    form {
+      width: 300px;
+    }
+    .invalid {
+      color: red;
+      font-size: 12px;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+  <h3>Sign Up</h3>
+  <div class="container d-flex align-items-center justify-content-center" style="min-height: 100vh;">
+    <form action="/users/signup" method="post" class="form-floating">
+      <div class="form-floating mb-2">
+        <input type="text" class="form-control" id="username" name="name" placeholder="Username" value="<%= input.username ? input.username : '' %>">
+        <label for="username">Username</label>
+        <div class="invalid"><%= invalid.username ? invalid.username : '' %></div>
+      </div>
+      <div class="form-floating mb-2">
+        <input type="email" class="form-control" id="email" name="email" placeholder="email@exmaple.com" <%= input.email ? input.email : '' %>>
+        <label for="email">Email address</label>
+        <div class="invalid"><%= invalid.email ? invalid.email : '' %></div>
+      </div>
+      <div class="form-floating mb-2">
+        <input type="password" class="form-control" name="password" id="password" placeholder="Password" <%= input.password ? input.password : '' %>>
+        <label for="password">Password</label>
+        <div class="invalid"><%= invalid.password ? invalid.password : '' %></div>
+      </div>
+      <div class="form-floating mb-2">
+        <input type="password" class="form-control" name="confirm" id="confirm" placeholder="Confirm" <%= input.confirm ? input.confirm : '' %>>
+        <label for="confirm">Confirm</label>
+      </div>
+      <button type="submit" class="btn btn-primary">Sign Up</button>
+    </form>
+  </div>
+</body>
+</html>

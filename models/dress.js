@@ -14,54 +14,61 @@ module.exports = (sequelize, DataTypes) => {
       Dress.belongsTo(models.FashionDesigner, {
         foreignKey: 'FashionDesignerId'
       });
-      Dress.hasMany(model.user, {
+      Dress.hasMany(models.User, {
         foreignKey: 'DressId'
       });
       // define association here
     }
   }
   Dress.init({
-    dressModel: DataTypes.STRING,
-    allowNull: false,
-      validate: {
-        notNull: {
-          msg: "Dress model cannot be null"
-        },
-        notEmpty: {
-          msg: "Dress model cannot be empty"
-        }
-      },
-    price: DataTypes.INTEGER,
-    allowNull: false,
-      validate: {
-        notNull: {
-          msg: "Magazine price cannot be null"
-        },
-        notEmpty: {
-          msg: "Magazine price cannot be empty"
-        },
-        minimumPrice(value) {
-          if (value < 350000) {
-            throw new Error(`Minimum selling price is ${formatRp}`)
+    dressModel:{
+      type:DataTypes.STRING,
+      allowNull: false,
+        validate: {
+          notNull: {
+            msg: "Dress model cannot be null"
+          },
+          notEmpty: {
+            msg: "Dress model cannot be empty"
           }
         }
-      },
-    stock: DataTypes.INTEGER,
-    allowNull: false,
-      validate: {
-        notNull: {
-          msg: "magazine stock cannot be null"
-        },
-        notEmpty: {
-          msg: "magazine stock cannot be empty"
-        },
-        minimumStock(value) {
-          if (value < 0) {
-            throw new Error('STOCK CANNOT BE NEGATIVE!')
+    } ,
+    price: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+        validate: {
+          notNull: {
+            msg: " price cannot be null"
+          },
+          notEmpty: {
+            msg: " price cannot be empty"
+          },
+          minimumPrice(value) {
+            if (value < 350000) {
+              throw new Error(`Minimum selling price is ${formatRp}`)
+            }
           }
         }
-      },
-    FashionDesignerId: DataTypes.INTEGER
+    } ,
+    stock: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+        validate: {
+          notNull: {
+            msg: " stock cannot be null"
+          },
+          notEmpty: {
+            msg: " stock cannot be empty"
+          },
+          minimumStock(value) {
+            if (value < 0) {
+              throw new Error('STOCK CANNOT BE NEGATIVE!')
+            }
+          }
+        }
+    } ,
+    FashionDesignerId: DataTypes.INTEGER,
+    DressId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Dress',

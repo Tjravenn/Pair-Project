@@ -20,48 +20,69 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   User.init({
-    name: DataTypes.STRING,
-    allowNull: false,
-      validate: {
-        notNull: {
-          msg: "username cannot be null"
-        },
-        notEmpty: {
-          msg: "username cannot be empty"
-        }
-    },
-    password: DataTypes.STRING,
-    allowNull: false,
-      validate: {
-        notNull: {
-          msg: "password cannot be null"
-        },
-        notEmpty: {
-          msg: "password cannot be empty"
-        },
-        minimumPassword(value) {
-          if (value.length < 3) {
-            throw new Error('password needs to have 3 minimal words')
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+        validate: {
+          notNull: {
+            msg: "username cannot be null"
+          },
+          notEmpty: {
+            msg: "username cannot be empty"
           }
-        }
-      },
-    role: DataTypes.STRING,
-    allowNull: false,
-    validate: {
-      notNull: {
-        msg: "role cannot be null"
-      },
-      notEmpty: {
-        msg: "role cannot be empty"
+      }
+    } ,
+    email: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull: { 
+          msg: "email cannot be null "
+        },
+        notEmpty: {
+           msg: "email cannot be empty"
+          },
       }
     },
-    DressId: DataTypes.INTEGER
+    password: {
+      type: DataTypes.STRING,
+      allowNull: false,
+        validate: {
+          notNull: {
+            msg: "password cannot be null"
+          },
+          notEmpty: {
+            msg: "password cannot be empty"
+          },
+          minimumPassword(value) {
+            if (value.length < 3) {
+              throw new Error('password needs to have 3 minimal words')
+            }
+          }
+        }
+    } ,
+    role: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        notNull: {
+          msg: "role cannot be null"
+        },
+        notEmpty: {
+          msg: "role cannot be empty"
+        }
+      }
+    } 
+    
   }, {
     sequelize,
     modelName: 'User',
-  });
-  User.beforeCreate((user) => {
-    user.password = encrypt(user.password);
+    hooks: {
+      beforeCreate: (val) => {
+        val.password = hashPassword(val.password);
+        val.role = 'user';
+      }
+    }
   });
   return User;
 };

@@ -1,10 +1,12 @@
 'use strict';
 const fs = require('fs');
+// const data1 = require('../data/fashiondesigner.json')
+// console.log(data);
 
 module.exports = {
   up (queryInterface, Sequelize) {
     const data = JSON.parse(fs.readFileSync('./data/fashiondesigner.json', 'utf-8'));
-    data.forEach(el => {
+    data = data.forEach(el => {
       el.createdAt = new Date();
       el.updatedAt = new Date();
      });
