@@ -95,12 +95,13 @@ class Controller {
     }
     static editProduct(req, res) {
         const { id } = req.params
-        const { dressModel, price, stock, FashionDesignerId } = req.body
+        const { dressModel, price, stock, imageUrl } = req.body
+        console.log(req.body);
         Dress.update({
             dressModel,
             price,
             stock,
-            FashionDesignerId
+            imageUrl
         }, {
             where:{
                 id
@@ -229,6 +230,29 @@ class Controller {
         req.session.destroy((err) => {
             res.redirect('/')
         })
+    }
+    static userBuy(req, res) {
+        const {id} = req.params
+    let price;
+    Dress.findByPk(id)
+      .then(product => {
+        price = product.price;
+        console.log(price);
+        return Dress.update({ stock: 1 }, { where: { id: id } });
+      })
+      .then(() => {
+        return User.findOne({ where: { UserId: req.session.user.id } })
+      })
+      .then((user) => {
+        return User.update({ balance: user.balance - price }, { where: { UserId: req.session.user.id } })
+      })
+      .then(() => res.redirect('/'))
+      .catch(err => {
+        if (!err.errors) res.send(err)
+        else {
+          res.send(err)
+        }
+    })
     }
 }
 

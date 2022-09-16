@@ -7,6 +7,7 @@ router.get('/signup', Controller.getSignup)
 router.post("/signup", Controller.postSignup)
 router.get('/signin', Controller.getSignin)
 router.post("/signin", Controller.postSignin)
+router.get('/buyItem/:id', Controller.userBuy);
 router.get("/logout", Controller.logOut)
 //admin
 router.get('/dashboard/admin/',Controller.getAllProducts)
