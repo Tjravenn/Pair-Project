@@ -2,7 +2,6 @@
 const {
   Model
 } = require('sequelize');
-const formatRp = require('../helpers/formatRp');
 module.exports = (sequelize, DataTypes) => {
   class Dress extends Model {
     /**

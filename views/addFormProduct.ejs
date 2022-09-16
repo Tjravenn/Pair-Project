@@ -1,45 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Page</title>
-    <style>
-        .invalid {
-            color: #d40000;
-            font-size: 12px;
-            font-weight: 500;
-        }
-    </style>
-</head>
-<body>
-    <h1>Add Product Page</h1>
-    <form action="/dashboard/admin/product/add" method="post">
-        <label for="1">Nama</label>
-        <input type="text" name="name" id="1" autocomplete="off" value="<%= input.name ? input.name : '' %>">
-        <div class="invalid"><%= invalid.name ? invalid.name : '' %></div>
-        <br>
-        <label for="2">Dress Model</label>
-        <input type="text" name="brand" id="2" autocomplete="off" value="<%= input.dressModel ? input.dressModel : '' %>">
-        <div class="invalid"><%= invalid.dressModel ? invalid.dressModel : '' %></div>
-        <br>
-        <label for="3">Stock</label>
-        <input type="number" name="stock" id="3" value="<%= input.stock ? input.stock : '' %>">
-        <div class="invalid"><%= invalid.stock ? invalid.stock : '' %></div>
-        <br>
-        <label for="7">Price</label>
-        <input type="number" name="price" id="7" value="<%= input.price ? input.price : '' %>">
-        <div class="invalid"><%= invalid.price ? invalid.price : '' %></div>
-        <br>
-        <input type="hidden" name="UserId" id="6" value="2">
-        <br>
-        <input type="submit" value="Add">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Add Product</title>
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" 
+          integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT"
+          crossorigin="anonymous"
+        />
+      </head>
+  <body>
+    <div class="mx-5">
+      
+      <br /><br />
 
-    </form>
+      <div class="w-50 mx-auto mb-5">
+      <h1 class="text-center">Form Add Product</h1>
 
-    <br><br>
-    <button><a href="/dashboard/admin">Back</a></button>
-    
-</body>
+      <form action="/users/dashboard/admin/product/add" method="post">
+        <div class="form-group">
+        <label> Name :</label>
+        <input type="text" name="dressModel" >
+        <br />
+        <label> Price :</label><br />
+          <input type="text" name="price" >
+        <br />
+        
+        <label> Stock :</label>
+        <input
+          type="text"
+          name="stock"
+          id=""
+        ></input>
+        <br />
+        <input type="submit" value="Submit " class="btn btn-primary"/>
+      </div>
+      </form>
+      </div>
+    </div>
+  </body>
 </html>

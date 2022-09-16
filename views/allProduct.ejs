@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Products</title>
+</head>
+<body>
+    <h3>Product Page</h3>
+    <button><a href="/users/dashboard/admin/product/add">Add product</a></button>
+    <br>
+
+
+    
+
+    <button><a href="/users/dashboard/admin/listUser">List User</a></button>
+    <form action="/users/dashboard/admin" method="get">
+    </form>
+
+
+    <form action="/users/dashboard/admin" method="get">
+        <label>Search</label>
+        <input type="text" name="search" placeholder="Beradasarkan Nama" autocomplete="off">
+        <button type="submit">Search</button>
+    </form>
+
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Stock</th>
+            <th>Price</th>
+            <th>Images</th>
+            <th>Action</th>
+        </tr>
+        <% result.forEach((el) =>{ %>
+        <tr>
+            <td><%= el.dressModel %> </td>
+            <td><%= el.stock %> </td>
+            <td>Rp<%= el.price %> </td>
+            <td><%= el.imagesUrl %></td>
+            <td><a href="users/dashboard/admin/product/edit/<%= el.id %>">Edit</a> | <a href="users/dashboard/admin/product/delete/<%= el.id %>">Delete</a></td>
+        </tr>
+        <% }) %> 
+    </table>
+
+    <button><a href="/users/logout">Logout</a></button>
+</body>
+</html>

@@ -1,5 +1,6 @@
 const { Dress, FashionDesigner, User } = require('../models/index')
 const { Op } = require('sequelize')
+const formatRp = require('../helpers/formatRp');
 const compareHashedPassword = require('../helpers/compareHashedPassword')
 const nodemailer = require('nodemailer')
 const smtpTransport = require('nodemailer-smtp-transport')
@@ -22,7 +23,7 @@ class Controller {
         },option)
         .then((result) => {
             // res.send(result)
-            res.render('home', {result})
+            res.render('allProduct', {result, formatRp})
         })
         .catch((error) => {
             res.send(error)
@@ -42,7 +43,7 @@ class Controller {
             attributes: {exclude: ['DressId']},
         },option)
             .then((result) => {
-                res.render('home', { result})
+                res.render('allProduct', { result, formatRp})
             })
             .catch((error) => {
                 res.send(error)
@@ -54,28 +55,20 @@ class Controller {
     static postAddProduct(req, res) {
         const { dressModel, price, stock } = req.body
         const input = {dressModel, price, stock}
-        console.log(input);
+        // console.log(input);
         Dress.create(input)
-            .then((result) => {
-                res.redirect('/dashboard/admin')
-            })
-            .catch((error) => {
-                if(!error.errors){
-                    res.send(error)
-                }else{
-                    let invalid = {}
-                    error.errors.forEach(el => {
-                        invalid[el.path] = el.message
-                    })
-                    .then((result) => {
-                        res.render('addFormProduct', {result: input})
-                    })
-                    .catch((error) => {
-                        res.send(error)
-                    })
-                }
-            })
-
+        .then((result) => {
+            res.redirect(`/users/dashboard/admin`)
+        })
+        .catch((error) => {
+            let err = error
+            if(error.name === 'SequelizeValidationError') {
+                err = error.errors.map((el) => {
+                    el.message
+                })
+            }
+            res.send(err)
+        })
     }
     static getProductEditform(req, res) {
         const { id } = req.params
@@ -108,7 +101,7 @@ class Controller {
             }
         })
             .then((result) => {
-                res.redirect(`/dasboard/admin`)
+                res.redirect(`/users/dashboard/admin`)
             })
             .catch((error) => {
                 res.send(error)
@@ -234,10 +227,12 @@ class Controller {
     static userBuy(req, res) {
         const {id} = req.params
     let price;
-    Dress.findByPk(id)
+    Dress.findByPk(id,{
+        attributes: {exclude: ['DressId']},
+    },)
       .then(product => {
         price = product.price;
-        console.log(price);
+        // console.log(price);
         return Dress.update({ stock: 1 }, { where: { id: id } });
       })
       .then(() => {

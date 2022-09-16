@@ -10,7 +10,7 @@ router.post("/signin", Controller.postSignin)
 router.get('/buyItem/:id', Controller.userBuy);
 router.get("/logout", Controller.logOut)
 //admin
-router.get('/dashboard/admin/',Controller.getAllProducts)
+router.get('/dashboard/admin',Controller.getAllProducts)
 router.get('/dashboard/admin/product/add',Controller.getProductAddform)
 router.post('/dashboard/admin/product/add',Controller.postAddProduct)
 router.get('/dashboard/admin/product/edit/:id',Controller.getProductEditform)
